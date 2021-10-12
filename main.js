@@ -1,4 +1,14 @@
-const correctAnswer = true;
+const questionList = [
+  "Are you a cat?",
+  "Are you a fish?",
+  "Are you a dog?",
+  "Are you a camel?",
+];
+let questionIndex = 0;
+let correctAnswer = true;
+
+const myQuestion = document.querySelector(".question");
+myQuestion.textContent = questionList[0];
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -7,7 +17,6 @@ yesButton.onclick = function () {
   } else {
     showAnswerIsIncorrect();
   }
-  disableButtons();
 };
 
 const noButton = document.querySelector(".no");
@@ -17,7 +26,6 @@ noButton.onclick = function () {
   } else {
     showAnswerIsIncorrect();
   }
-  disableButtons();
 };
 
 function showAnswerIsCorrect() {
@@ -25,6 +33,7 @@ function showAnswerIsCorrect() {
   resultElement.textContent = "Yay! It is correct :) ";
   resultElement.className = "correct";
   document.body.append(resultElement);
+  setNewQuestion();
 }
 
 function showAnswerIsIncorrect() {
@@ -32,9 +41,17 @@ function showAnswerIsIncorrect() {
   resultElement.textContent = "Aww no, try again :(";
   resultElement.className = "incorrect";
   document.body.append(resultElement);
+  disableButtons();
 }
 
 function disableButtons() {
   yesButton.disabled = true;
   noButton.disabled = true;
+}
+
+function setNewQuestion() {
+  questionIndex += 1;
+  myQuestion.textContent = questionList[questionIndex];
+  correctAnswer = false;
+  document.body.removeChild(document.querySelector(".correct"));
 }
