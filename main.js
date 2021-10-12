@@ -1,18 +1,31 @@
 const correctAnswer = true;
 
-const myHeading = document.querySelector("h1");
-myHeading.textContent = "Hello World!";
-
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
-  if (correctAnswer === false) {
-    alert("Yay! :)");
+  if (correctAnswer === true) {
+    const resultElement = document.createElement("p");
+    resultElement.textContent = "Yay! It is correct.";
+    resultElement.className = "correct";
+    document.body.append(resultElement);
   } else {
-    alert("Aw man, that's not correct :(");
+    const resultElement = document.createElement("p");
+    resultElement.textContent = "Aww man, that is not correct.";
+    resultElement.className = "incorrect";
+    document.body.append(resultElement);
   }
 };
 
 const noButton = document.querySelector(".no");
 noButton.onclick = function () {
-  alert("Aw man, that's not correct :(");
+  if (correctAnswer === false) {
+    const resultElement = document.createElement("p");
+    resultElement.textContent = "Yay! It is correct.";
+    resultElement.className = "correct";
+    document.body.append(resultElement);
+  } else {
+    const resultElement = document.createElement("p");
+    resultElement.textContent = "Aww man, that is not correct.";
+    resultElement.className = "incorrect";
+    document.body.append(resultElement);
+  }
 };
