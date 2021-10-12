@@ -16,7 +16,6 @@ const noButton = document.querySelector(".no");
 noButton.onclick = function () {
   if (correctAnswer === false) {
     showAnswerIsCorrect();
-    showAnswerIsCorrect();
   } else {
     const resultElement = document.createElement("p");
     resultElement.textContent = "Aww man, that is not correct.";
