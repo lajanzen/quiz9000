@@ -1,15 +1,13 @@
-const correctAnswer = false;
+const correctAnswer = true;
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
   if (correctAnswer === true) {
     showAnswerIsCorrect();
   } else {
-    const resultElement = document.createElement("p");
-    resultElement.textContent = "Aww man, that is not correct.";
-    resultElement.className = "incorrect";
-    document.body.append(resultElement);
+    showAnswerIsIncorrect();
   }
+  disableButtons();
 };
 
 const noButton = document.querySelector(".no");
@@ -17,11 +15,9 @@ noButton.onclick = function () {
   if (correctAnswer === false) {
     showAnswerIsCorrect();
   } else {
-    const resultElement = document.createElement("p");
-    resultElement.textContent = "Aww man, that is not correct.";
-    resultElement.className = "incorrect";
-    document.body.append(resultElement);
+    showAnswerIsIncorrect();
   }
+  disableButtons();
 };
 
 function showAnswerIsCorrect() {
@@ -29,4 +25,16 @@ function showAnswerIsCorrect() {
   resultElement.textContent = "Yay! It is correct :) ";
   resultElement.className = "correct";
   document.body.append(resultElement);
+}
+
+function showAnswerIsIncorrect() {
+  const resultElement = document.createElement("p");
+  resultElement.textContent = "Aww no, try again :(";
+  resultElement.className = "incorrect";
+  document.body.append(resultElement);
+}
+
+function disableButtons() {
+  yesButton.disabled = true;
+  noButton.disabled = true;
 }
