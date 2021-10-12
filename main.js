@@ -1,12 +1,9 @@
-const correctAnswer = true;
+const correctAnswer = false;
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
   if (correctAnswer === true) {
-    const resultElement = document.createElement("p");
-    resultElement.textContent = "Yay! It is correct.";
-    resultElement.className = "correct";
-    document.body.append(resultElement);
+    showAnswerIsCorrect();
   } else {
     const resultElement = document.createElement("p");
     resultElement.textContent = "Aww man, that is not correct.";
@@ -18,10 +15,8 @@ yesButton.onclick = function () {
 const noButton = document.querySelector(".no");
 noButton.onclick = function () {
   if (correctAnswer === false) {
-    const resultElement = document.createElement("p");
-    resultElement.textContent = "Yay! It is correct.";
-    resultElement.className = "correct";
-    document.body.append(resultElement);
+    showAnswerIsCorrect();
+    showAnswerIsCorrect();
   } else {
     const resultElement = document.createElement("p");
     resultElement.textContent = "Aww man, that is not correct.";
@@ -29,3 +24,10 @@ noButton.onclick = function () {
     document.body.append(resultElement);
   }
 };
+
+function showAnswerIsCorrect() {
+  const resultElement = document.createElement("p");
+  resultElement.textContent = "Yay! It is correct :) ";
+  resultElement.className = "correct";
+  document.body.append(resultElement);
+}
