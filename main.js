@@ -2,13 +2,24 @@ const questionList = [
   "Are you a cat?",
   "Are you a fish?",
   "Are you a dog?",
-  "Are you a camel?",
+  "Are you human?",
 ];
+
+const answers = [false, false, false, true];
+
 let questionIndex = 0;
-let correctAnswer = true;
+let correctAnswer = answers[questionIndex];
 
 const myQuestion = document.querySelector(".question");
-myQuestion.textContent = questionList[0];
+myQuestion.textContent = questionList[questionIndex];
+updateProgress();
+
+function updateProgress() {
+  const progressElement = document.querySelector(".progress");
+  progressElement.textContent = `Question ${questionIndex + 1}/${
+    questionList.length
+  }`;
+}
 
 const yesButton = document.querySelector(".yes");
 yesButton.onclick = function () {
@@ -33,7 +44,7 @@ function showAnswerIsCorrect() {
   resultElement.textContent = "Yay! It is correct :) ";
   resultElement.className = "correct";
   document.body.append(resultElement);
-  setTimeout(setNewQuestion, 2000);
+  setTimeout(setNewQuestion, 1000);
 }
 
 function showAnswerIsIncorrect() {
@@ -49,9 +60,23 @@ function disableButtons() {
   noButton.disabled = true;
 }
 
+function finishQuiz() {
+  document.body.removeChild(document.querySelector(".questionCard"));
+  const finishElement = document.createElement("p");
+  finishElement.textContent = "Yay, you made it! 🎉";
+  finishElement.className = "finishElement";
+  document.body.append(finishElement);
+}
+
 function setNewQuestion() {
   questionIndex += 1;
-  myQuestion.textContent = questionList[questionIndex];
-  correctAnswer = false;
   document.body.removeChild(document.querySelector(".correct"));
+
+  if (questionIndex < questionList.length) {
+    correctAnswer = answers[questionIndex];
+    myQuestion.textContent = questionList[questionIndex];
+    updateProgress();
+  } else {
+    finishQuiz();
+  }
 }
