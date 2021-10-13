@@ -61,11 +61,9 @@ function disableButtons() {
 }
 
 function finishQuiz() {
-  document.body.removeChild(document.querySelector(".questionCard"));
-  const finishElement = document.createElement("p");
+  const finishElement = document.querySelector(".questionCard");
   finishElement.textContent = "Yay, you made it! 🎉";
   finishElement.className = "finishElement";
-  document.body.append(finishElement);
 }
 
 function setNewQuestion() {
