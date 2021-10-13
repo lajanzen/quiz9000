@@ -25,6 +25,10 @@ button {
   border-radius: 1em;
 }
 
+button:active {
+  background-color: aquamarine;
+}
+
 .correct {
   color: green;
 }
