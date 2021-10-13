@@ -33,7 +33,7 @@ function showAnswerIsCorrect() {
   resultElement.textContent = "Yay! It is correct :) ";
   resultElement.className = "correct";
   document.body.append(resultElement);
-  setNewQuestion();
+  setTimeout(setNewQuestion, 2000);
 }
 
 function showAnswerIsIncorrect() {
